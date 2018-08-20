@@ -16,7 +16,7 @@
 				<div class="big-table-inner" :style="{
 					 width: tableWidth + 'px',
 					 height: tableHeight + 'px'}">
-					<ul v-bind:key="rowIndex" v-for="(row, rowIndex) in visible.table">
+					<ul v-bind:key="rowIndexKey(row, rowIndex)" v-for="(row, rowIndex) in visible.table">
 						<BigTableCell v-for="item in row" :item="item" :rowIndex="rowIndex" />
 					</ul>
 				</div>

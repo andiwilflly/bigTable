@@ -33,9 +33,16 @@ export default {
 			redrawVisibleTableAction: 'redrawVisibleTable',
 			onWindowResizeAction: 'onWindowResize'
 		}),
-		onWindowResize () {
-			this.onWindowResizeAction();
+		/**
+		 * Generate key for [bigTAble] row
+		 * @param row {Object}
+		 * @param rowIndex {number}
+		 * @returns {string}
+		 * */
+		rowIndexKey(row, rowIndex) {
+			return `${Object.keys(row).join('_')}_${rowIndex}`;
 		},
+		onWindowResize () { this.onWindowResizeAction(); },
 		/**
 		 * Here we make deferred call of [setAxesAction] action for better performance
 		 * @param e {Object}

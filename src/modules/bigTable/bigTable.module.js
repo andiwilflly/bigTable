@@ -4,7 +4,7 @@ let timeout = null;
 export default {
 
 	state: {
-		size: 40000,
+		size: 10,
 		offset: 15,
 		x: 0,
 		y: 0,
@@ -21,6 +21,7 @@ export default {
 	},
 	mutations: {
 		updateState(state, newState = {}) {
+			// Mutation for debug [bigTable] state in header
 			const names = Object.keys(newState);
 			names.forEach((name) => {
 				if (typeof newState[name] !== 'object') return Vue.set(state, name, newState[name]);
