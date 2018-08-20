@@ -4,7 +4,7 @@ let timeout = null;
 export default {
 
 	state: {
-		size: 10,
+		size: 40000,
 		offset: 15,
 		x: 0,
 		y: 0,
