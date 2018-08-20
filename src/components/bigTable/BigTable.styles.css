@@ -2,6 +2,11 @@ h3 {
     margin: 40px 0 0;
 }
 
+.big-table-wrapper {
+    display: flex;
+}
+
+
 .big-table-container {
     width: 500px;
     height: 300px;
@@ -12,32 +17,6 @@ h3 {
 
 .big-table-inner {
     background: #378f62;
-}
-
-
-.big-table-ruler-y,
-.big-table-ruler-x {
-    display: flex;
-    position: absolute;
-    z-index: 1;
-    background: darkgrey;
-    box-sizing: border-box;
-    font-size: 12px;
-    transition: 0.4s all;
-}
-
-.big-table-ruler-y {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-}
-
-.big-table-ruler-x {
-}
-
-
-.big-table-ruler-top-item {
-    border-right: 1px solid white;
-    box-sizing: border-box;
 }
 
 

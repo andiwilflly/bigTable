@@ -125,8 +125,8 @@ export default {
 			}
 			commit('redrawVisibleTable', { rows, cells });
 		},
-		onWindowResize({ commit }) {
-			commit('onWindowResize');
+		onWindowResize(context) {
+			context.commit('onWindowResize');
 			context.dispatch('redrawVisibleTable');
 		}
 	},

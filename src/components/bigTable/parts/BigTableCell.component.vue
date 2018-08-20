@@ -54,7 +54,6 @@ export default {
 	},
 	computed: {
 		...mapState([
-			'offset',
 			'cell',
 			'size',
 			'valuesTable'
@@ -65,7 +64,7 @@ export default {
 		 * */
 		positionTop() {
 			const row = Math.ceil(this.item.id / this.size) - 1;
-			return row * this.cell.height + this.offset;
+			return row * this.cell.height;
 		},
 		/**
 		 * Calculate [left] position of current [cell]
@@ -74,7 +73,7 @@ export default {
 		positionLeft() {
 			const row = Math.ceil(this.item.id / this.size);
 			const numberInRow = this.size - (row * this.size - this.item.id) - 1;
-			return numberInRow * this.cell.width + this.offset;
+			return numberInRow * this.cell.width;
 		},
 		/**
 		 * Here we compare local [data] and data from [store]
@@ -89,7 +88,7 @@ export default {
 </script>
 
 
-<template type="text/x-template" id="big-table-template">
+<template type="text/x-template" id="big-table-cell-template">
 	<li class="big-table-cell"
 		v-bind:key="item.id"
 		v-bind:style="{

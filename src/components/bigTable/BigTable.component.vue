@@ -1,7 +1,10 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
-import BigTableHeader from '@/components/bigTable/BigTableHeader.component';
-import BigTableCell from '@/components/bigTable/BigTableCell.component';
+import BigTableHeader from '@/components/bigTable/parts/BigTableHeader.component';
+import BigTableCell from '@/components/bigTable/parts/BigTableCell.component';
+import BigTableRulerX from '@/components/bigTable/parts/BigTableRulerX.component';
+import BigTableRulerY from '@/components/bigTable/parts/BigTableRulerY.component';
+
 
 // Define namespace module [bigTable]
 const { mapState, mapActions, mapGetters } = createNamespacedHelpers('bigTable');
@@ -12,7 +15,9 @@ export default {
 	timeout: null,
 	components: {
 		BigTableHeader,
-		BigTableCell
+		BigTableCell,
+		BigTableRulerX,
+		BigTableRulerY
 	},
 	created: function () {
 		// Draw [bigTable] for the first time
@@ -41,38 +46,16 @@ export default {
 			this.timeout = setTimeout(() => {
 				this.setAxesAction({ x: e.target.scrollLeft, y: e.target.scrollTop });
 			}, 100);
-		},
-		/**
-		 * Here we calculate [y] position for vertical ruler of bigTable
-		 * @param row {number}
-		 * @returns {number}
-		 */
-		rulerYPositionTop (row) {
-			return row * this.cell.height + this.offset;
-		},
-		/**
-		 * Here we calculate [x] position for horizontal ruler of bigTable
-		 * @param id {number}
-		 * @returns {number}
-		 */
-		rulerXPositionLeft (id) {
-			const row = Math.ceil(id / this.size);
-			const numberInRow = this.size - (row * this.size - id) - 1;
-			return numberInRow * this.cell.width + this.offset;
 		}
 	},
 	computed: {
 		...mapState([
-			'offset',
-			'size',
-			'cell',
 			'visible'
 		]),
 		...mapGetters([
 			'bigTable',
 			'tableWidth',
-			'tableHeight',
-			'firstVisibleTableRow'
+			'tableHeight'
 		])
 	}
 }
