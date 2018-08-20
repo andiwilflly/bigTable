@@ -18,7 +18,23 @@ describe('bigTable.module', () => {
 			modules: {
 				bigTable: {
 					namespaced: true,
-					...bigTableModule
+					...bigTableModule,
+					state: {
+						size: 40000,
+						offset: 15,
+						x: 0,
+						y: 0,
+						visible: {
+							width: window.innerWidth - 30,
+							height: window.innerHeight / 1.5,
+							table: {}
+						},
+						cell: {
+							width: 200,
+							height: 170
+						},
+						valuesTable: {}
+					}
 				}
 			}
 		})
@@ -29,6 +45,15 @@ describe('bigTable.module', () => {
 		store.commit('bigTable/updateState', { size: 40001, visible: { height: 200 } });
 		expect(store.state.bigTable.size).to.equal(40001);
 		expect(store.state.bigTable.visible.height).to.equal(200);
+
+		store.dispatch('bigTable/setAxes', { x: 0, y: 1000 });
+		store.dispatch('bigTable/updateValuesTable', {
+			id: 280011,
+			value: 'value for 280011'
+		});
+
+		expect(store.state.bigTable.visible.table[8][4].id).to.equal(280011);
+		expect(store.state.bigTable.visible.table[8][4].value).to.equal('value for 280011');
 	});
 
 	it('updateValuesTable', () => {
@@ -53,13 +78,13 @@ describe('bigTable.module', () => {
 	it('redrawVisibleTable', () => {
 		store.dispatch('bigTable/setAxes', { x: 2000, y: 2000 });
 		store.dispatch('bigTable/updateValuesTable', {
-			id: 480015,
-			value: 'hello from 480015!'
+			id: 480010,
+			value: 'hello from 480010!'
 		});
 
-		expect(store.state.bigTable.visible.table[13][3].id).to.equal(480015);
-		expect(store.state.bigTable.visible.table[13][3].value).to.equal('hello from 480015!');
-		expect(store.state.bigTable.visible.table[13][3].index).to.equal(3);
+		expect(store.state.bigTable.visible.table[13][10].id).to.equal(480010);
+		expect(store.state.bigTable.visible.table[13][10].value).to.equal('hello from 480010!');
+		expect(store.state.bigTable.visible.table[13][10].index).to.equal(10);
 
 	});
 });

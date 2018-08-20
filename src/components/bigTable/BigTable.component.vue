@@ -33,7 +33,7 @@ export default {
 		},
 		/**
 		 * Here we make deferred call of [setAxesAction] action for better performance
-		 * @param e {DocumentEvent}
+		 * @param e {Object}
 		 * @returns {*}
 		 */
 		onTableScroll (e) {
@@ -43,7 +43,7 @@ export default {
 			}, 100);
 		},
 		/**
-		 * Here we calculate [y] position of vertical ruler of bigTable
+		 * Here we calculate [y] position for vertical ruler of bigTable
 		 * @param row {number}
 		 * @returns {number}
 		 */
@@ -51,7 +51,7 @@ export default {
 			return row * this.cell.height + this.offset;
 		},
 		/**
-		 * Here we calculate [x] position of horizontal ruler of bigTable
+		 * Here we calculate [x] position for horizontal ruler of bigTable
 		 * @param id {number}
 		 * @returns {number}
 		 */
