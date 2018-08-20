@@ -12,7 +12,6 @@ const { mapState, mapActions, mapGetters } = createNamespacedHelpers('bigTable')
 
 export default {
 	name: 'BigTable',
-	timeout: null,
 	components: {
 		BigTableHeader,
 		BigTableCell,
@@ -49,10 +48,7 @@ export default {
 		 * @returns {*}
 		 */
 		onTableScroll (e) {
-			clearTimeout(this.timeout);
-			this.timeout = setTimeout(() => {
-				this.setAxesAction({ x: e.target.scrollLeft, y: e.target.scrollTop });
-			}, 100);
+			this.setAxesAction({ x: e.target.scrollLeft, y: e.target.scrollTop });
 		}
 	},
 	computed: {
